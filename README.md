@@ -22,17 +22,25 @@ npm install gotiny
 To create a new GoTiny link, the long url as an argument in the `gotiny.set()` function
 
 ```js
-const gotiny = require("gotiny");
+const gotiny = require("gotiny")
 
 // Using Then
 
-gotiny.set("https://amazon.com/very-long-url").then((res) => console.log(res));
+gotiny.set("https://amazon.com/very-long-url")
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
 
 // Using Async/Await
 
 const getLink = async (input) => {
-  const res = await gotiny.set(input);
-  console.log(res);
+
+  try {
+    const res = await gotiny.set(input)
+    console.log(res)
+  } catch (err) {
+    console.log(err)
+  }
+
 };
 
 getLink("https://amazon.com/very-long-url");
@@ -93,7 +101,7 @@ Example response:
 ];
 ```
 
-## About GoTiny links
+## About GoTiny Links
 The unique links that GoTiny generates are always 16 characters long, including the domain name. GoTiny links are all lowercase and don't include characters that could be confused with each other (e.g. o/0 or 1/i/l).
 
 ## Privacy
@@ -101,4 +109,4 @@ GoTiny does not collect, handle or store any user information.
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE.md)

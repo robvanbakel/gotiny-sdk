@@ -2,6 +2,22 @@ const axios = require('axios');
 
 const set = async input => {
 
+  if (input?.replace(/\s/g, '') === '') {
+    throw {
+      source: 'sdk',
+      code: 'missing-argument',
+      message: 'Empty string provided',
+    }
+  }
+
+  if (!input) {
+    throw {
+      source: 'sdk',
+      code: 'missing-argument',
+      message: 'No string provided',
+    }
+  }
+
   // Make request to API
   const res = await axios.post('https://gotiny.cc/api', { input })
   const data = res.data
@@ -9,7 +25,7 @@ const set = async input => {
   if (data.error) {
 
     // Send back error if found
-    return data.error
+    throw data.error
 
   } else {
 
