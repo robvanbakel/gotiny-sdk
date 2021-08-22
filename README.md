@@ -41,9 +41,9 @@ const getLink = async (input) => {
     console.log(err)
   }
 
-};
+}
 
-getLink("https://amazon.com/very-long-url");
+getLink("https://amazon.com/very-long-url")
 ```
 
 The response will always be an array of objects, each of which contains a tiny link, formatted in different ways.
@@ -109,4 +109,4 @@ GoTiny does not collect, handle or store any user information.
 
 ## License
 
-[MIT](LICENSE.md)
+[MIT](LICENSE)
