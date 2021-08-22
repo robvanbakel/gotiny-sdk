@@ -1,0 +1,26 @@
+{
+  "name": "gotiny",
+  "version": "1.0.0",
+  "description": "SDK for GoTiny: A lightweight link shortener API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robvanbakel/gotiny-sdk.git"
+  },
+  "author": {
+    "name" : "Rob van Bakel",
+    "email" : "robbakel@gmail.com",
+    "url" : "https://robvanbakel.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/robvanbakel/gotiny-sdk/issues"
+  },
+  "homepage": "https://github.com/robvanbakel/gotiny-sdk#readme",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
