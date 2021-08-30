@@ -10,6 +10,7 @@ SDK for GoTiny: A lightweight link shortener API
 - [About GoTiny Links](#about-gotiny-links)
 - [Privacy](#privacy)
 - [License](#license)
+- [Other Repositories](#other-repositories)
 
 ## Installation
 
@@ -110,3 +111,9 @@ GoTiny does not collect, handle or store any user information.
 ## License
 
 [MIT](LICENSE)
+
+## Other Repositories
+
+- [robvanbakel/gotiny-api](https://github.com/robvanbakel/gotiny-api)
+- [robvanbakel/gotiny-website](https://github.com/robvanbakel/gotiny-website)
+- [robvanbakel/gotiny-discord-bot](https://github.com/robvanbakel/gotiny-discord-bot)
