@@ -6,6 +6,8 @@ SDK for GoTiny: A lightweight link shortener API
 
 - [Installation](#installation)
 - [Usage](#usage)
+  - [Create GoTiny link](#create-gotiny-link)
+  - [Resolve GoTiny link](#resolve-gotiny-link)
 - [Automatic URL Parsing](#automatic-url-parsing)
 - [About GoTiny Links](#about-gotiny-links)
 - [Privacy](#privacy)
@@ -20,7 +22,9 @@ npm install gotiny
 
 ## Usage
 
-To create a new GoTiny link, the long url as an argument in the `gotiny.set()` function
+### Create GoTiny link
+
+To create a new GoTiny link, pass the long url as an argument in the `gotiny.set()` function
 
 ```js
 const gotiny = require("gotiny")
@@ -33,7 +37,7 @@ gotiny.set("https://amazon.com/very-long-url")
 
 // Using Async/Await
 
-const getLink = async (input) => {
+const createShortLink = async (input) => {
 
   try {
     const res = await gotiny.set(input)
@@ -44,7 +48,7 @@ const getLink = async (input) => {
 
 }
 
-getLink("https://amazon.com/very-long-url")
+createShortLink("https://amazon.com/very-long-url")
 ```
 
 The response will always be an array of objects, each of which contains a tiny link, formatted in different ways.
@@ -70,6 +74,37 @@ Example response:
 ```
 
 Note that you’re not required to use the `long` attribute in your code. GoTiny will automatically resolve the short link in the users web browser to point to the original url.
+
+### Resolve GoTiny link
+
+To resolve a GoTiny link, pass the link as an argument in the `gotiny.get()` function
+
+```js
+const gotiny = require("gotiny")
+
+// Using Then
+
+gotiny.get("https://gotiny.cc/y68hxc")
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+
+// Using Async/Await
+
+const resolveShortLink = async (input) => {
+
+  try {
+    const res = await gotiny.get(input)
+    console.log(res)
+  } catch (err) {
+    console.log(err)
+  }
+
+}
+
+resolveShortLink("https://gotiny.cc/y68hxc")
+```
+
+Alternatively, you can omit the http-protocol or pass just the GoTiny code to the `gotiny.get()` function.
 
 ## Automatic URL Parsing
 
