@@ -7,6 +7,7 @@ SDK for GoTiny: A lightweight link shortener API
 - [Installation](#installation)
 - [Usage](#usage)
   - [Create GoTiny link](#create-gotiny-link)
+  - [Options](#options)
   - [Resolve GoTiny link](#resolve-gotiny-link)
 - [Automatic URL Parsing](#automatic-url-parsing)
 - [About GoTiny Links](#about-gotiny-links)
@@ -24,7 +25,7 @@ npm install gotiny
 
 ### Create GoTiny link
 
-To create a new GoTiny link, pass the long url as an argument in the `gotiny.set()` function
+To create a new GoTiny link, pass the long url as an argument in the `gotiny.set()` function.
 
 ```js
 const gotiny = require("gotiny")
@@ -63,17 +64,33 @@ Example response:
 ```js
 // gotiny.set("https://amazon.com/very-long-url")
 
-[
+;[
   {
     long: "https://amazon.com/very-long-url",
     code: "y68hxc",
     tiny: "gotiny.cc/y68hxc",
     link: "https://gotiny.cc/y68hxc",
   },
-];
+]
 ```
 
 Note that you’re not required to use the `long` attribute in your code. GoTiny will automatically resolve the short link in the users web browser to point to the original url.
+
+### Options
+
+Options are provided by passing an object as a second argument to the `gotiny.set()` function. Options currently supported are:
+
+| Key           | Type    | Description                                                                                 |
+| :------------ | :------ | :------------------------------------------------------------------------------------------ |
+| `custom`      | string  | Should consist of 4-32 lowercase letters, numbers, hyphen and/or underscore symbols         |
+| `useFallback` | boolean | Set to `false` if you don't want to generate a random code when a custom code can't be used |
+
+```js
+gotiny.set("https://amazon.com/very-long-url", {
+  custom: "amazon", // generate gotiny.cc/amazon
+  useFallback: false // don't use randomly generated code when "amazon" can't be used
+})
+```
 
 ### Resolve GoTiny link
 
