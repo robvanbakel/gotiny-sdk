@@ -1,7 +1,6 @@
 const axios = require('axios');
 
-const set = async input => {
-
+const set = async (input, opt) => {
   if (input?.replace(/\s/g, '') === '') {
     throw {
       source: 'sdk',
@@ -19,7 +18,7 @@ const set = async input => {
   }
 
   // Make request to API
-  const res = await axios.post('https://gotiny.cc/api', { input })
+  const res = await axios.post('https://gotiny.cc/api', { input, ...opt })
   const data = res.data
 
   if (data.error) {
