@@ -1,17 +1,11 @@
 const axios = require("axios")
 
-const get = async (input) => {
-  let code = null
+const get = async (code) => {
+  // If full link is provided, filter code out of it
+  const fullLinkRegex = /gotiny.cc\/(.{4,32})/
 
-  // Filter GoTiny code from input
-
-  const fullLinkRegex = /gotiny.cc\/(.{6})/
-
-  if (input.length === 6) {
-    code = input
-  } else if (fullLinkRegex.test(input)) {
-    const regexRes = input.match(fullLinkRegex)
-    code = regexRes[1]
+  if (fullLinkRegex.test(code)) {
+    code = code.match(fullLinkRegex)[1]
   }
 
   // Make request to API
