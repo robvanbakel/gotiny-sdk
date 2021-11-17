@@ -64,7 +64,7 @@ Example response:
 ```js
 // gotiny.set("https://amazon.com/very-long-url")
 
-;[
+[
   {
     long: "https://amazon.com/very-long-url",
     code: "y68hxc",

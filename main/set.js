@@ -1,19 +1,12 @@
 const axios = require("axios")
 
 const set = async (input, opt) => {
-  if (input?.replace(/\s/g, "") === "") {
+  // Throw error if no input is provided
+  if (!input || input.toString().replace(/\s/g, "") === "") {
     throw {
       source: "sdk",
       code: "missing-argument",
-      message: "Empty string provided",
-    }
-  }
-
-  if (!input) {
-    throw {
-      source: "sdk",
-      code: "missing-argument",
-      message: "No string provided",
+      message: "No input provided",
     }
   }
 
