@@ -25,7 +25,7 @@ npm install gotiny
 
 ### Create GoTiny link
 
-To create a new GoTiny link, pass the long url as an argument in the `gotiny.set()` function.
+To create a new GoTiny link, pass the long url as an argument in the `gotiny.set()` function. To shorten multiple links at once, you can pass in an array with links.
 
 ```js
 const gotiny = require("gotiny")
