@@ -7,9 +7,9 @@ SDK for GoTiny: A lightweight link shortener API
 - [Installation](#installation)
 - [Usage](#usage)
   - [Create GoTiny link](#create-gotiny-link)
-  - [Options](#options)
+    - [Automatic URL Parsing](#automatic-url-parsing)
+    - [Options](#options)
   - [Resolve GoTiny link](#resolve-gotiny-link)
-- [Automatic URL Parsing](#automatic-url-parsing)
 - [About GoTiny Links](#about-gotiny-links)
 - [Privacy](#privacy)
 - [License](#license)
@@ -25,7 +25,7 @@ npm install gotiny
 
 ### Create GoTiny link
 
-To create a new GoTiny link, pass the long url as an argument in the `gotiny.set()` function. To shorten multiple links at once, you can pass in an array with links.
+To create a new GoTiny link, pass the long url as an argument in the `gotiny.set()` function.
 
 ```js
 const gotiny = require("gotiny")
@@ -74,19 +74,53 @@ Example response:
 ]
 ```
 
+#### Automatic URL Parsing
+
+GoTiny automatically filters URLs from the user input. This way, you as a developer won't have to provide a clean link, but can just feed an entire paragraph into GoTiny. It will create a short url from every url that it finds and include it in the response array.
+
+Example response:
+
+```js
+// gotiny.set("The top 3 most popular websites are youtube.com, www.google.com and apple.com.")
+
+[
+  {
+    long: "youtube.com",
+    code: "86df6c",
+    tiny: "gotiny.cc/86df6c",
+    link: "https://gotiny.cc/86df6c",
+  },
+  {
+    long: "www.google.com",
+    code: "6wrsnf",
+    tiny: "gotiny.cc/6wrsnf",
+    link: "https://gotiny.cc/6wrsnf",
+  },
+  {
+    long: "apple.com",
+    code: "c56ned",
+    tiny: "gotiny.cc/c56ned",
+    link: "https://gotiny.cc/c56ned",
+  },
+];
+```
+
 Note that you’re not required to use the `long` attribute in your code. GoTiny will automatically resolve the short link in the users web browser to point to the original url.
 
-### Options
+#### Options
 
-Options are provided by passing an object as a second argument to the `gotiny.set()` function. Options currently supported are:
+Options are provided by passing an object to the `gotiny.set()` function. The object should have a `long` key with the long link as a value, as wel as any of the supported options. Options currently supported are:
 
 | Key           | Type    | Description                                                                                 |
 | :------------ | :------ | :------------------------------------------------------------------------------------------ |
-| `custom`      | string  | Should consist of 4-32 lowercase letters, numbers, hyphen and/or underscore symbols         |
-| `useFallback` | boolean | Set to `false` if you don't want to generate a random code when a custom code can't be used |
+| `custom`      | string  | Generates a custom link (e.g. `gotiny.cc/custom-link`). Custom codes should consist of 4-32 lowercase letters, numbers, `-` and/or `_` symbols.  |
+| `useFallback` | boolean | Set to `false` if you don't want to use a randomly generated 6-character fallback code and throw an error instead when a custom code can't be used. |
+
+To generate multiple links at once, you can pass an array of objects in to the `gotiny.set()` function.
 
 ```js
-gotiny.set("https://amazon.com/very-long-url", {
+gotiny.set({
+  long: "https://amazon.com/very-long-url", 
   custom: "amazon", // generate gotiny.cc/amazon
   useFallback: false // don't use randomly generated code when "amazon" can't be used
 })
@@ -122,37 +156,6 @@ resolveShortLink("https://gotiny.cc/y68hxc")
 ```
 
 Alternatively, you can omit the http-protocol or pass just the GoTiny code to the `gotiny.get()` function.
-
-## Automatic URL Parsing
-
-GoTiny automatically filters URLs from the user input. This way, you as a developer won't have to provide a clean link, but can just feed an entire paragraph into GoTiny. It will create a short url from every url that it finds and include it in the response array.
-
-Example response:
-
-```js
-// gotiny.set("The top 3 most popular websites are youtube.com, www.google.com and apple.com.")
-
-[
-  {
-    long: "youtube.com",
-    code: "86df6c",
-    tiny: "gotiny.cc/86df6c",
-    link: "https://gotiny.cc/86df6c",
-  },
-  {
-    long: "www.google.com",
-    code: "6wrsnf",
-    tiny: "gotiny.cc/6wrsnf",
-    link: "https://gotiny.cc/6wrsnf",
-  },
-  {
-    long: "apple.com",
-    code: "c56ned",
-    tiny: "gotiny.cc/c56ned",
-    link: "https://gotiny.cc/c56ned",
-  },
-];
-```
 
 ## About GoTiny Links
 The unique links that GoTiny generates are always 16 characters long, including the domain name. GoTiny links are all lowercase and don't include characters that could be confused with each other (e.g. o/0 or 1/i/l).
