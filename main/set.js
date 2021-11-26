@@ -1,8 +1,8 @@
 const axios = require("axios")
 
-const set = async (input, opt) => {
+const set = async (payload) => {
   // Throw error if no input is provided
-  if (!input || input.toString().replace(/\s/g, "") === "") {
+  if (!payload) {
     throw {
       source: "sdk",
       code: "missing-argument",
@@ -10,8 +10,12 @@ const set = async (input, opt) => {
     }
   }
 
+  if (typeof payload === "string") {
+    payload = { input: payload }
+  }
+
   // Make request to API
-  const res = await axios.post("https://gotiny.cc/api", { input, ...opt })
+  const res = await axios.post("https://gotiny.cc/api", payload)
   const data = res.data
 
   if (data.error) {
