@@ -124,6 +124,8 @@ gotiny.set({
   custom: "amazon", // generate gotiny.cc/amazon
   useFallback: false // don't use randomly generated code when "amazon" can't be used
 })
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
 ```
 
 ### Resolve GoTiny link
