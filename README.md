@@ -130,31 +130,24 @@ gotiny.set({
 
 ### Resolve GoTiny link
 
-To resolve a GoTiny link, pass the link as an argument in the `gotiny.get()` function
+To resolve a GoTiny link, pass the link as an argument in the `gotiny.get()` function. The full link will return as plain text.
 
 ```js
 const gotiny = require("gotiny")
 
-// Using Then
-
 gotiny.get("https://gotiny.cc/y68hxc")
-  .then(res => console.log(res))
+  .then(res => console.log(res)) // https://amazon.com/very-long-url
   .catch(err => console.log(err))
+```
 
-// Using Async/Await
+Add an object with an `extended` key set to `true` as a second argument to return a more detailed object.
 
-const resolveShortLink = async (input) => {
+```js
+const gotiny = require("gotiny")
 
-  try {
-    const res = await gotiny.get(input)
-    console.log(res)
-  } catch (err) {
-    console.log(err)
-  }
-
-}
-
-resolveShortLink("https://gotiny.cc/y68hxc")
+gotiny.get("https://gotiny.cc/y68hxc" , { extended: true })
+  .then(res => console.log(res)) // { code: 'y68hxc', long: 'https://amazon.com/very-long-url' }
+  .catch(err => console.log(err))
 ```
 
 Alternatively, you can omit the http-protocol or pass just the GoTiny code to the `gotiny.get()` function.

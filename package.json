@@ -1,6 +1,6 @@
 {
   "name": "gotiny",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "SDK for GoTiny: A lightweight link shortener API",
   "main": "index.js",
   "scripts": {
