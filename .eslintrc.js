@@ -6,7 +6,6 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   rules: {
-    semi: [1, 'never'],
     'no-throw-literal': 0,
   },
-}
+};
