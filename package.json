@@ -4,13 +4,19 @@
   "description": "SDK for GoTiny: A lightweight link shortener API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/robvanbakel/gotiny-sdk.git"
   },
-  "keywords": ["url", "link", "shortener", "url shortener", "link shortener"],
+  "keywords": [
+    "url",
+    "link",
+    "shortener",
+    "url shortener",
+    "link shortener"
+  ],
   "author": {
     "name": "Rob van Bakel",
     "email": "robbakel@gmail.com",
@@ -23,5 +29,9 @@
   "homepage": "https://github.com/robvanbakel/gotiny-sdk#readme",
   "dependencies": {
     "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb-base": "^15.0.0"
   }
 }
