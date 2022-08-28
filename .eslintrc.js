@@ -8,4 +8,8 @@ module.exports = {
   rules: {
     'no-throw-literal': 0,
   },
+  ignorePatterns: [
+    'node_modules',
+    'dist',
+  ],
 };
