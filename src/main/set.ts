@@ -16,7 +16,7 @@ export interface InputObject {
   useFallback?: boolean;
 }
 
-const set = async (input: InputObject | string) => {
+const set = async (input: InputObject | InputObject["long"]) => {
   // Throw error if no input is provided
   if (!input) {
     throw {
