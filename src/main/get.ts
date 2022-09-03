@@ -4,7 +4,12 @@ export interface Options {
   extended?: boolean;
 }
 
-const get = async (input: string, opt: Options = {}) => {
+export interface ReturnObject {
+  code: string;
+  long: string;
+}
+
+const get = async (input: string, opt: Options = {}): Promise<string | ReturnObject> => {
   // If full link is provided, filter code out of it
   const fullLinkRegex = /gotiny.cc\/(.{4,32})/;
 
