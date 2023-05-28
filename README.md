@@ -168,3 +168,4 @@ GoTiny does not collect, handle or store any user information.
 - [robvanbakel/gotiny-website](https://github.com/robvanbakel/gotiny-website)
 - [robvanbakel/gotiny-discord-bot](https://github.com/robvanbakel/gotiny-discord-bot)
 - [robvanbakel/gotiny-slack-bot](https://github.com/robvanbakel/gotiny-slack-bot)
+- [robvanbakel/gotiny-vscode-extension](https://github.com/robvanbakel/gotiny-vscode-extension)
