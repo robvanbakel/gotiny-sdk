@@ -145,7 +145,7 @@ Add an object with an `extended` key set to `true` as a second argument to retur
 ```js
 const gotiny = require("gotiny")
 
-gotiny.get("https://gotiny.cc/y68hxc" , { extended: true })
+gotiny.get("https://gotiny.cc/y68hxc", { extended: true })
   .then(res => console.log(res)) // { code: 'y68hxc', long: 'https://amazon.com/very-long-url' }
   .catch(err => console.log(err))
 ```
