@@ -40,12 +40,12 @@ const set = async (input: InputObject | InputObject["long"]): Promise<ReturnObje
     const output: ReturnObject[] = [];
 
     // Loop through API response and create array with GoTiny objects
-    data.forEach((doc: GoTinyObject) => {
+    data.forEach(({long, code}: GoTinyObject) => {
       output.push({
-        long: doc.long,
-        code: doc.code,
-        tiny: `gotiny.cc/${doc.code}`,
-        link: `https://gotiny.cc/${doc.code}`,
+        long,
+        code,
+        tiny: `gotiny.cc/${code}`,
+        link: `https://gotiny.cc/${code}`,
       });
     });
 
