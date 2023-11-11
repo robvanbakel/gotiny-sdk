@@ -1,3 +1,9 @@
+> ### GoTiny is no longer available
+>
+> Read more: [GoTiny is shutting down](https://github.com/robvanbakel/gotiny-api/issues/11)
+
+---
+
 # GoTiny SDK
 
 SDK for GoTiny: A lightweight link shortener API
